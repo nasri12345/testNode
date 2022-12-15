@@ -1,0 +1,42 @@
+<center>
+
+<h3 style="color:blue;text-decoration:underline">List of products</h3>
+
+<a href="http://localhost:3000/product/moreProduct">add new product</a>
+<table border=1>
+<tr>
+    <th>Libelle</th>
+    <th>Prix</th>
+    <th>Description</th>
+    <th>Quantite</th>
+    <th>Stock</th>
+    <th>actions</th>
+    
+</tr>
+
+<tr {% for p in produits %}>
+    <td>{{p.Libelle}}</td>
+    <td>{{p.Prix}}</td>
+    <td>{{p.Description}}</td>
+    <td>{{p.Quantite}}</td>
+
+                {% if p.Quantite==0 %}
+                <td>
+                en repture de stock
+                </td>
+                {% else %}
+                <td>
+                 dans le stock
+                </td>
+                {% endif %}
+    <td>
+    <a href="http://localhost:3000/product/UpdateProduct/{{p.id}}">Modifier</a>
+    <a href="http://localhost:3000/product/SuppProduct/{{p.id}}">Supprimer</a>
+    </td>
+    
+
+</tr>
+{% endfor %}
+
+</table>
+</center>
